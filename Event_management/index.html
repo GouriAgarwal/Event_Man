@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance Events | Plan Your Perfect Occasion</title>
+    
+    <!-- Use a modern, clean font pairing for professionalism -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    
+    <!-- Inline CSS for styling -->
+    <style>
+        /* Color Palette & Typography */
+        :root {
+            --primary-teal: #008080; /* Elegant Teal for main accents */
+            --secondary-gold: #daa520; /* Subtle Gold for highlights */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #ffffff;
+            --bg-section: #f4f7f6; /* Very light subtle grey/teal background */
+            --border-color: #e0e0e0;
+
+            /* Fonts */
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light); 
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-light);
+            padding: 15px 0;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-family: var(--heading-font);
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            padding-bottom: 5px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary-teal);
+            border-bottom: 2px solid var(--primary-teal);
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px; /* Pill shape for modern look */
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button.primary {
+            background-color: var(--primary-teal);
+            color: white;
+        }
+        .button.primary:hover {
+            background-color: #006b6b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section (Cover) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519757606399-5264b49b49e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content {
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-family: var(--heading-font);
+            font-size: 56px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        }
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        .section-alt {
+            background-color: var(--bg-section);
+        }
+        section h2.section-title {
+            font-family: var(--heading-font);
+            font-size: 36px;
+            text-align: center;
+            color: var(--primary-teal);
+            margin-bottom: 15px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+        
+        /* Event Listings */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        .event-card {
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .event-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 5px solid var(--secondary-gold);
+        }
+        .event-content {
+            padding: 25px;
+        }
+        .event-content h3 {
+            font-family: var(--heading-font);
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .event-meta {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        .event-meta strong {
+            color: var(--primary-teal);
+            font-weight: 600;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-gold);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .testimonial-client {
+            font-weight: 700;
+            color: var(--primary-teal);
+            font-family: var(--heading-font);
+        }
+        .testimonial-event {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Booking / Contact Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: var(--body-font);
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-teal);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.1);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form .button {
+            width: 100%;
+            padding: 15px 25px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark); /* Using a very dark grey for footer */
+            color: #cccccc;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            .hero-content p {
+                font-size: 18px;
+            }
+            .event-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+                display: inline-block;
+                font-size: 14px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            section h2.section-title {
+                font-size: 30px;
+            }
+            section {
+                padding: 50px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#home" class="logo">Elegance Events</a>
+            <nav>
+                <a href="#events">Events</a>
+                <a href="#booking">Booking</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content container">
+                <h1>Crafting Experiences, One Event at a Time</h1>
+                <p>From corporate galas to dream weddings, we manage every detail with precision and style. Your vision is our blueprint.</p>
+                <a href="#booking" class="button primary">Start Planning Now</a>
+            </div>
+        </section>
+
+        
+        <!-- Event Listings Section -->
+        <section id="events" class="section-alt">
+            <div class="container">
+                <h2 class="section-title">Our Event Portfolio</h2>
+                <p class="section-subtitle">A showcase of the diverse occasions we specialize in managing.</p>
+                
+                <div class="event-grid">
+                    
+                    <!-- Event 1: Corporate Launch -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50082de2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Corporate Event">
+                        <div class="event-content">
+                            <h3>High-End Corporate Gala</h3>
+                            <div class="event-meta">
+                                <strong>Type:</strong> Product Launch & Networking | <strong>Capacity:</strong> 500 Guests
+                            </div>
+                            <p>Flawless execution of major corporate events, emphasizing brand identity and professional engagement.</p>
+                            <a href="#booking" class="button primary" style="padding: 8px 15px; font-size: 14px;">Inquire for Corporate</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: Wedding -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1520854221252-4786d708f36c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Wedding">
+                        <div class="event-content">
+                            <h3>Luxury Destination Wedding</h3>
+                            <div class="event-meta">
+                                <strong>Type:</strong> Full-Service Wedding Planning | <strong>Location:</strong> Goa & Udaipur
+                            </div>
+                            <p>Designing unforgettable, multi-day celebrations that capture the unique essence of your love story.</p>
+                            <a href="#booking" class="button primary" style="padding: 8px 15px; font-size: 14px;">Plan Your Wedding</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: Conference/Summit -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1540306159677-40c283d57366?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Exhibition">
+                        <div class="event-content">
+                            <h3>Industry Summit & Expo</h3>
+                            <div class="event-meta">
+                                <strong>Type:</strong> B2B Conference & Exhibition | <strong>Attendance:</strong> 2000+
+                            </div>
+                            <p>Managing large-scale logistical challenges, speaker coordination, and state-of-the-art staging setups.</p>
+                            <a href="#booking" class="button primary" style="padding: 8px 15px; font-size: 14px;">View Conference Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Booking Information Section -->
+        <section id="booking">
+            <div class="container">
+                <h2 class="section-title">Our Simple Booking Process</h2>
+                <p class="section-subtitle">We break down event management into four clear, stress-free stages.</p>
+                
+                <div class="process-steps" style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; margin-top: 50px;">
+                    <div style="width: 220px; margin-bottom: 20px;">
+                        <span style="font-size: 40px; color: var(--secondary-gold);">1.</span>
+                        <h3 style="font-family: var(--heading-font); color: var(--primary-teal); margin: 5px 0;">Consultation</h3>
+                        <p style="font-size: 14px; color: var(--text-light);">Share your vision, budget, and requirements with our dedicated team.</p>
+                    </div>
+                    <div style="width: 220px; margin-bottom: 20px;">
+                        <span style="font-size: 40px; color: var(--secondary-gold);">2.</span>
+                        <h3 style="font-family: var(--heading-font); color: var(--primary-teal); margin: 5px 0;">Design & Proposal</h3>
+                        <p style="font-size: 14px; color: var(--text-light);">We create a bespoke concept, detailed plan, and transparent quote.</p>
+                    </div>
+                    <div style="width: 220px; margin-bottom: 20px;">
+                        <span style="font-size: 40px; color: var(--secondary-gold);">3.</span>
+                        <h3 style="font-family: var(--heading-font); color: var(--primary-teal); margin: 5px 0;">Execution</h3>
+                        <p style="font-size: 14px; color: var(--text-light);">Our team manages all logistics, vendors, and setup on-site.</p>
+                    </div>
+                    <div style="width: 220px; margin-bottom: 20px;">
+                        <span style="font-size: 40px; color: var(--secondary-gold);">4.</span>
+                        <h3 style="font-family: var(--heading-font); color: var(--primary-teal); margin: 5px 0;">Review & Follow-up</h3>
+                        <p style="font-size: 14px; color: var(--text-light);">We ensure smooth wrap-up and gather feedback for future improvements.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#contact" class="button primary">Get a Custom Quote</a>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-alt">
+            <div class="container">
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Hear why leading organizations and families trust Elegance Events.</p>
+                
+                <div class="testimonial-grid">
+                    
+                    <div class="testimonial-card">
+                        <p>"The entire corporate summit ran flawlessly. Elegance Events handled the 1,500 attendees and the complex AV setup without a single glitch. True professionals!"</p>
+                        <div class="testimonial-client">Rajesh Kumar, CEO, Tech Solutions India</div>
+                        <div class="testimonial-event">Annual Tech Summit (2025)</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"Our wedding in Goa was a dream come true. The team's attention to detail, from decor to vendor management, allowed us to simply enjoy our special day."</p>
+                        <div class="testimonial-client">Priya & Vikram Shah</div>
+                        <div class="testimonial-event">Destination Wedding (Dec 2024)</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p>"For our silver jubilee celebration, they created an atmosphere of sophisticated elegance. Highly recommend their personalized and prompt service."</p>
+                        <div class="testimonial-client">Mrs. Suman Rao</div>
+                        <div class="testimonial-event">Family Jubilee Celebration (2024)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Contact/Inquiry Form Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Discuss Your Next Event</h2>
+                <p class="section-subtitle">Fill out the form below and a planner will contact you within 24 hours.</p>
+                
+                <form class="contact-form" onsubmit="handleContact(event)">
+                    <label for="c_name">Your Full Name:</label>
+                    <input type="text" id="c_name" name="name" placeholder="E.g., Neha Sharma" required>
+
+                    <label for="c_email">Email Address:</label>
+                    <input type="email" id="c_email" name="email" placeholder="E.g., neha.s@company.com" required>
+
+                    <label for="c_phone">Mobile Number:</label>
+                    <input type="tel" id="c_phone" name="phone" pattern="[0-9]{10}" placeholder="E.g., 9876543210 (10 digits)" required>
+                    
+                    <label for="event_type">Type of Event:</label>
+                    <select id="event_type" name="event_type">
+                        <option value="Wedding">Wedding</option>
+                        <option value="Corporate Gala">Corporate Gala / Launch</option>
+                        <option value="Conference">Conference / Summit</option>
+                        <option value="Birthday">Private Celebration / Birthday</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="c_details">Event Details & Requirements:</label>
+                    <textarea id="c_details" name="details" placeholder="Describe your event, estimated guest count, and desired date range." required></textarea>
+
+                    <button type="submit" class="button primary">Submit Inquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: var(--secondary-gold);">
+        <div class="container">
+            <p>&copy; 2025 Elegance Events Management. Creating moments that matter.</p>
+        </div>
+    </footer>
+
+    
+    <script type="text/javascript">
+        // JavaScript for handling form submission (no backend for this example)
+        function handleContact(event) {
+            event.preventDefault(); // Stop the form from reloading the page
+
+            const name = document.getElementById('c_name').value;
+            const eventType = document.getElementById('event_type').value;
+
+            // Simple user feedback using a custom alert
+            const alertMessage = `Thank you, ${name.split(' ')[0]}! We have received your inquiry for a ${eventType} event. A dedicated planner will be in touch shortly!`;
+            
+            // In a real application, you would send this data to a server here.
+            console.log('Event Inquiry Submitted:', {
+                name: name,
+                email: document.getElementById('c_email').value,
+                phone: document.getElementById('c_phone').value,
+                eventType: eventType,
+                details: document.getElementById('c_details').value
+            });
+
+            // Display feedback (using a simple alert as required)
+            alert(alertMessage);
+
+            // Clear the form
+            event.target.reset();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
